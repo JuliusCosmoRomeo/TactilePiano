@@ -30,51 +30,38 @@ defs.append("pattern")
 		.attr("y2", 0)
 		.attr("stroke", "black");
 
-defs.append("pattern")
-	.attr("id", "playTonePlateau")
-	.attr("x", 0)
-	.attr("y", 0)
-	.attr("width", 100)
-	.attr("height", 10)
-	.attr("patternUnits", "userSpaceOnUse")
-	.append("line")
-		.attr("x1", 0)
-		.attr("y1", 0)
-		.attr("x2", 20)
-		.attr("y2", 0)
-		.attr("stroke", "black");
-
-
-
-
 
 /*var mainGroup = svg.append("g")
 .attr("id","mainGroup");
 */
-var tones = ["c","d","e","f","g","a","h","q","f","t"];
+var tones = ["c","d","e","f","g","a","h"];
 var blackTones = ["cis","dis","fis","gis","ais"];
 var i = 0;
 svg.selectAll(".keys")
 .data(tones).
 enter().append("rect")
 .attr("class","keys")
-.attr("y", function(){
+.attr("x", function(){
     var x = i*keyWidth + i * keyOffset;
     i=i+1;
     return x;
-}).attr("x",50)
+}).attr("y",115)
 .attrs(normalKeyAttrs)
 .on("mouseover", onMouseOverKey)
 .attr(lastPlayed, Date.now());
 /*
 */
 
+svg.selectAll(".keys")
+.data(tones).
+enter().append("line")
+
 
 svg.selectAll(".blackKeys")
 .data(blackTones).
-enter().append("circle")
+enter().append("rect")
 .attr("class","blackKeys")
-.attr("cy", function(d){
+.attr("x", function(d){
     var x = 0;
     var i = 0;
     console.log("data " + d);
@@ -88,19 +75,13 @@ enter().append("circle")
 
 
     }
-    x = i * keyWidth + (i-1) * keyOffset + blackKeyOffset;
+    x = (i-1) * keyWidth + i * keyOffset + (1/2) * keyWidth + blackKeyOffset; //(i-1) * keyOffset + blackKeyOffset
     return x;
-}).attr("cx",30)
+}).attr("y",30)
 .attr("r",10)
+.attrs(blackKeyAttrs)
 .on("mouseover", onMouseOverKey)
 .attr(lastPlayed, Date.now());
-
-svg.append("rect")
-.attr("x", 100)
-.attr("y",0)
-.on("click",playTone)
-.attrs(playToneAttrs);
-
 
 
 function onMouseOverKey(tone){
@@ -124,6 +105,6 @@ function onMouseOverBlackKey(tone){
 }
 
 function playTone(){
-    Android.playTone(hoveredTone)
+    console.log(hoveredTone)
 
 }
