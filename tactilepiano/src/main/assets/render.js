@@ -2,6 +2,8 @@
 var linepodNS = "http://hpi.de/baudisch/linepod";
 const lastPlayed = "linepod:lastPlayed";
 
+d3.namespaces.linepod = linepodNS;
+
 var hoveredTone = "";
 var removedItems = {};
 
@@ -9,10 +11,12 @@ var svg = d3.select("body")
 .append("svg")
 .attr("width", width)
 .attr("height", height)
+.attr("version", 1.1)
+.attr("xmlns:linepod", linepodNS)
+.attr("xmlns","http://www.w3.org/2000/svg")
+.attr("xmlns:xlink", "http://www.w3.org/1999/xlink")
 .attr("id","svg");
 //.on("click", playTone);
-
-d3.namespaces.linepod = linepodNS;
 
 var defs = svg.append("defs")
 
@@ -31,9 +35,7 @@ defs.append("pattern")
 		.attr("stroke", "black");
 
 
-/*var mainGroup = svg.append("g")
-.attr("id","mainGroup");
-*/
+
 var tones = ["c","d","e","f","g","a","h"];
 var blackTones = ["cis","dis","fis","gis","ais"];
 var i = 0;
@@ -49,8 +51,7 @@ enter().append("rect")
 .attrs(normalKeyAttrs)
 .on("mouseover", onMouseOverKey)
 .attr(lastPlayed, Date.now());
-/*
-*/
+
 
 svg.selectAll(".keys")
 .data(tones).
@@ -78,7 +79,6 @@ enter().append("rect")
     x = (i-1) * keyWidth + i * keyOffset + (1/2) * keyWidth + blackKeyOffset; //(i-1) * keyOffset + blackKeyOffset
     return x;
 }).attr("y",30)
-.attr("r",10)
 .attrs(blackKeyAttrs)
 .on("mouseover", onMouseOverKey)
 .attr(lastPlayed, Date.now());
@@ -86,22 +86,22 @@ enter().append("rect")
 
 function onMouseOverKey(tone){
 	hoveredTone = tone;
-	/*var el = d3.select(this);
+	var el = d3.select(this);
     console.log(el.attr(lastPlayed));
 	el.attr(lastPlayed, Date.now());
     if (Date.now() - el.attr(lastPlayed) > 1500){
     	Android.playTone(tone)
-	}*/
+	}
 }
 
 function onMouseOverBlackKey(tone){
 
     hoveredTone = tone;
-	/*var el = d3.select(this);
+	var el = d3.select(this);
 	el.attr(lastPlayed, Date.now());
     if (Date.now() - el.attr(lastPlayed) > 1500){
-    	//Android.playTone(tone)
-	}*/
+    	Android.playTone(tone)
+	}
 }
 
 function playTone(){
