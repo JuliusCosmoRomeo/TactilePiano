@@ -24,14 +24,14 @@ defs.append("pattern")
 	.attr("id", "keyPlateau")
 	.attr("x", 0)
 	.attr("y", 0)
-	.attr("width", keyWidth)
-	.attr("height", 2)
+	.attr("width", 2)
+	.attr("height", keyHeight)
 	.attr("patternUnits", "userSpaceOnUse")
 	.append("line")
 		.attr("x1", 0)
 		.attr("y1", 0)
-		.attr("x2", 20)
-		.attr("y2", 0)
+		.attr("x2", 0)
+		.attr("y2", keyHeight)
 		.attr("stroke", "black");
 
 
@@ -88,9 +88,9 @@ function onMouseOverKey(tone){
 	hoveredTone = tone;
 	var el = d3.select(this);
     console.log(el.attr(lastPlayed));
-	el.attr(lastPlayed, Date.now());
-    if (Date.now() - el.attr(lastPlayed) > 1500){
+	if (Date.now() - el.attr(lastPlayed) > 200){
     	Android.playTone(tone)
+	    el.attr(lastPlayed, Date.now());
 	}
 }
 
@@ -98,9 +98,9 @@ function onMouseOverBlackKey(tone){
 
     hoveredTone = tone;
 	var el = d3.select(this);
-	el.attr(lastPlayed, Date.now());
-    if (Date.now() - el.attr(lastPlayed) > 1500){
+	if (Date.now() - el.attr(lastPlayed) > 200){
     	Android.playTone(tone)
+	    el.attr(lastPlayed, Date.now());
 	}
 }
 
