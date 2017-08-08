@@ -150,5 +150,5 @@ function simulateFirstPrint(){
 }
 
 
-simulateFirstPrint();
-//printSVG();
+//simulateFirstPrint();
+printSVG();

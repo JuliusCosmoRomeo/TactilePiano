@@ -1,7 +1,7 @@
 
 normalKeyAttrs = {"fill":function(){
-return "white";
-//return "url(#keyPlateau)"}
+//return "white";
+return "url(#keyPlateau)"
 }
 ,
                  "stroke":function(){return "black"},
@@ -9,8 +9,8 @@ return "white";
                  "height":function(){return keyHeight}}
 
 blackKeyAttrs = {"fill":function(){
-//return "url(#keyPlateau)"}
-return "white";
+return "url(#keyPlateau)"
+//return "white";
 },
                  "stroke":function(){return "black"},
                  "width":function(){return keyWidth/2},
