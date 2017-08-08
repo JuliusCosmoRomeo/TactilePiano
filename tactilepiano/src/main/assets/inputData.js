@@ -1,6 +1,6 @@
 var maxAirbarHeight = 1936;
 var maxAirbarWidth = 3452;
-var airbarA4OffsetX = -200;
+var airbarA4OffsetX = -700;
 var airbarA4OffsetY = 0;
 
 //maxAirbarWidth / maxAirbarHeight = 1,78305
@@ -158,6 +158,6 @@ function getAllElementsFromPoint(x, y) {
 
 function printStatusChanged(status){
     switch(status){
-       console.log("finished printing");
+       case 0: console.log("finished printing");
     }
 }
