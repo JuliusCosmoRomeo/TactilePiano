@@ -1,5 +1,8 @@
+paperWidth = 200;
+paperHeight = 270;
 width = 200;
 height = 200;
+paperA4Yoffset = 125;
 keyWidth = 20;
 keyHeight = 80;
 keyOffset = 6;

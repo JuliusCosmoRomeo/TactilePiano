@@ -11,6 +11,9 @@ var svg = d3.select("body")
 .append("svg")
 .attr("width", width)
 .attr("height", height)
+.attr("viewBox", "0 0 " + width + " " + height)
+.attr("preserveAspectRatio", "xMinYMin meet")
+.attr("y",paperA4Yoffset)
 .attr("version", 1.1)
 .attr("xmlns:linepod", linepodNS)
 .attr("xmlns","http://www.w3.org/2000/svg")
@@ -98,7 +101,7 @@ function onMouseOverBlackKey(tone){
 
     hoveredTone = tone;
 	var el = d3.select(this);
-	if (Date.now() - el.attr(lastPlayed) > 200){
+	if (Date.now() - el.attr(lastPlayed) > 500){
     	Android.playTone(tone)
 	    el.attr(lastPlayed, Date.now());
 	}

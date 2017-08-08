@@ -1,8 +1,15 @@
 var maxAirbarHeight = 1936;
 var maxAirbarWidth = 3452;
+var airbarA4OffsetX = -200;
+var airbarA4OffsetY = 0;
+
 //maxAirbarWidth / maxAirbarHeight = 1,78305
 var lastx2=0;
-var lasty2=0
+var lasty2=0;
+var cursorX1;
+var cursorY1;
+var cursorX2;
+var cursorY2;
 
 var sizeFactor = maxAirbarWidth / svg.attr("width");
 console.log(sizeFactor);
@@ -75,10 +82,10 @@ function getInputData(x1,y1,x2,y2,eventType1,eventType2){
     y1 = y1/sizeFactor;
     x2 = x2/sizeFactor;
     y2 = y2/sizeFactor;*/
-    x1 = (maxAirbarWidth - x1)/10;
-    y1 = (maxAirbarHeight - y1)/10;
-    x2 = (maxAirbarWidth - x2)/10;
-    y2 = (maxAirbarHeight - y2)/10;
+    x1 = (maxAirbarWidth - x1 + airbarA4OffsetX)/10;
+    y1 = (maxAirbarHeight - y1 + airbarA4OffsetY)/10;
+    x2 = (maxAirbarWidth - x2 + airbarA4OffsetX)/10;
+    y2 = (maxAirbarHeight - y2 + airbarA4OffsetY)/10;
 
 
     console.log(x1 + ", " + y1);
@@ -97,6 +104,28 @@ function getInputData(x1,y1,x2,y2,eventType1,eventType2){
         lastx2 = x2;
         lasty2 = y2;
     }
+
+    cursorX1 = x1;
+    cursorY1 = y1;
+    cursorX2 = x2;
+    cursorY2 = y2;
+
+
+}
+
+
+function getInputDataDebug(x1, y1, x2, y2, eventType1, eventType2){
+     console.log(document.elementFromPoint(x1,y1));
+        console.log(eventType1);
+        console.log(eventType2);
+
+        checkEventType(eventType1,x1,y1);
+
+        if (lastx2!=x2 && lasty2!=y2){
+            checkEventType(eventType2,x2,y2);
+            lastx2 = x2;
+            lasty2 = y2;
+        }
 
 }
 
@@ -127,3 +156,8 @@ function getAllElementsFromPoint(x, y) {
     return elements;
 }
 
+function printStatusChanged(status){
+    switch(status){
+       console.log("finished printing");
+    }
+}

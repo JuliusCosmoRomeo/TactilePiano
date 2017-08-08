@@ -139,4 +139,16 @@ function printSVG(){
 
 
 
-printSVG();
+function simulateFirstPrint(){
+    getSVGDiff();
+    var source = '<?xml version="1.0" standalone="no"?>\r\n' + "<svg></svg>";
+    console.log(source);
+    var printJobUUID = generateUUID();
+    console.log(printJobUUID);
+    printJobs.push(printJobUUID);
+    Android.sendSVGToLaserPlotter(source, printJobUUID);
+}
+
+
+simulateFirstPrint();
+//printSVG();
