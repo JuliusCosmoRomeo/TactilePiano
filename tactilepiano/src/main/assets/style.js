@@ -1,16 +1,19 @@
 
+//to make printing much faster we use white fills for the keys. If you want the original design,
+//comment in the keyplateau but printing the piano with that fill takes 19 minutes
 normalKeyAttrs = {"fill":function(){
-//return "white";
-return "url(#keyPlateau)"
+return "white";
+//return "url(#keyPlateau)"
 }
 ,
                  "stroke":function(){return "black"},
                  "width":function(){return keyWidth},
                  "height":function(){return keyHeight}}
-
+//to make printing much faster we use white fills for the keys. If you want the original design,
+//comment in the keyplateau but printing the piano with that fill takes 19 minutes
 blackKeyAttrs = {"fill":function(){
-return "url(#keyPlateau)"
-//return "white";
+//return "url(#keyPlateau)"
+return "white";
 },
                  "stroke":function(){return "black"},
                  "width":function(){return keyWidth/2},
